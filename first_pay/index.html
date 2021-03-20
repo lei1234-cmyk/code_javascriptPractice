@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            background-color: #eee;
+            width: 200px;
+            height: 200px;
+            padding: 30px;
+        }
+        button {
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>商品：ZARA打折季</p>
+        <p>原价：500元</p>
+        <p>现价：50元</p>
+        <p>地址：北京朝阳区</p>
+        <button id="btn01">取消</button>
+        <button id="btn02">确认</button>
+    </div>
+
+    <script>
+        let btn01 = document.getElementById('btn01')
+        let btn02 = document.getElementById('btn02')
+        btn02.addEventListener('click',function(){
+            let res = window.confirm('确认支付')
+            if(res){
+                location.href = './index02.html'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码</title>
+    <style>
+        .v_code {
+            margin-top: 10px;
+            margin-left: 100px;
+        }
+        .code{
+            display: inline-block;
+            background-color: #eee;
+            font-size: 50px;
+            color: blue;
+            padding: 15px;
+            letter-spacing: 10px;
+            font-weight: 800;
+            font-style: italic;
+        }
+        .input_code {
+            margin: 10px 0 ;
+        }
+        #btn01 {
+            width: 80px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="v_code">
+        <div class="code_show">
+            <span class="code" id="checkCode"></span>
+            <a id="linkbt">看不清换一张</a>
+        </div>
+        <div class="input_code">
+            <label>验证码：</label>
+            <input type="text" id="inputCode">
+            <span id="text_show"></span>
+        </div>
+        <input type="button" id="btn01" value="确定">
+    </div>
+
+    <script>
+        let code = document.getElementById('checkCode')
+        let linkbt = document.getElementById('linkbt')
+        let btn01 = document.getElementById('btn01')
+        
+        window.onload = function(){
+            let res =  getCode()
+            function getCode(){
+                let arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
+                let str = ''
+                for(let i=0;i<6;i++){
+                    let num = Math.round(Math.random()*(15-0)+0)
+                    str += arr[num]
+                }
+                return str
+            }
+            code.innerHTML = res
+            linkbt.addEventListener('click',function(){
+                code.innerHTML = getCode()
+            })
+
+            btn01.addEventListener('click',function(){
+                let value = code.innerText
+                let inputValue = document.getElementById('inputCode').value
+                console.log(value)
+                console.log(inputValue)
+                if(value != inputValue){
+                    alert('验证码不匹配')
+                }
+            })
+        }
+
+    </script>
+</body>
+</html>
